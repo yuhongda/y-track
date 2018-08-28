@@ -1,0 +1,37 @@
+{
+  "name": "y-track",
+  "version": "1.0.0",
+  "description": "a track tool for react project",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "babel -d ./dist/ ./src/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuhongda/y-track.git"
+  },
+  "keywords": [
+    "react",
+    "decorator",
+    "track"
+  ],
+  "author": "yu.hongda",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yuhongda/y-track/issues"
+  },
+  "homepage": "https://github.com/yuhongda/y-track#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@types/react": "^16.4.12",
+    "@types/react-dom": "^16.0.7"
+  },
+  "dependencies": {
+    "core-decorators": "^0.20.0",
+    "mobx-react": "^5.2.5",
+    "react": "^16.4.2"
+  }
+}
