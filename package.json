@@ -4,7 +4,7 @@
   "description": "a track tool for react project",
   "main": "./dist/index.js",
   "scripts": {
-    "build": "babel -d ./dist/ ./src/",
+    "build": "tsc | dts-generator --project ./ --out ./dist/index.d.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,7 +27,9 @@
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@types/react": "^16.4.12",
-    "@types/react-dom": "^16.0.7"
+    "@types/react-dom": "^16.0.7",
+    "dts-generator": "^2.1.0",
+    "typescript": "^3.0.1"
   },
   "dependencies": {
     "core-decorators": "^0.20.0",

@@ -1,8 +1,20 @@
 import React from 'react'
 import { autobind } from 'core-decorators';
 import { observer, inject } from 'mobx-react';
-import AnalysisGather from './analysis';
 import defaultTrackMethods from './defaultTrackMethods';
+const AnalysisGather = require('./analysis');
+
+interface TrackItem {
+    methodName: string,
+    description: string
+}
+
+interface TrackPattern {
+    app?: string,
+    version?: string,
+    loginUser?: string,
+    funcPath?: string
+}
 
 /**
  * 
@@ -19,27 +31,27 @@ import defaultTrackMethods from './defaultTrackMethods';
     }} trackPattern 
  * 
  */
-export default function enableTrack(trackItems, trackPattern) {
-    return function EnableTrackDecorator(component) {
+export default function enableTrack(trackItems: TrackItem, trackPattern: TrackPattern): (component: React.ComponentType) => React.ComponentType {
+    return function EnableTrackDecorator(component: React.ComponentType) {
 
-        function getDisplayName(comp) {
+        function getDisplayName(comp: React.ComponentType) {
             return comp.displayName || 
                 comp.name || 
                 'Component'
         }
 
-        function attachTrack(item){
+        function attachTrack(item: TrackItem){
             const func = component.prototype[item.methodName];
             if(!func) return;
 
-            component.prototype[item.methodName] = (...args) => {
+            component.prototype[item.methodName] = (...args: any[]) => {
                 trackPattern.funcPath = item.description ? `${getDisplayName(component)}-${item.description}` : `${getDisplayName(component)}-${item.methodName}`
                 AnalysisGather(trackPattern);
                 func.apply(component, ...args);
             }
         }
 
-        let methods = [];
+        let methods: Array<TrackItem> = [];
         defaultTrackMethods.concat(trackItems).forEach(item => {
             if(methods.findIndex(m => m.methodName == item.methodName) == -1){
                 methods.push(item)

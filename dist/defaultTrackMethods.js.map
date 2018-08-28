@@ -1,0 +1,1 @@
+{"version":3,"file":"defaultTrackMethods.js","sourceRoot":"","sources":["../src/defaultTrackMethods.ts"],"names":[],"mappings":"AAAA,eAAe;IACX;QACI,UAAU,EAAE,mBAAmB;QAC/B,WAAW,EAAE,UAAU;KAC1B;IACD;QACI,UAAU,EAAE,UAAU;QACtB,WAAW,EAAE,QAAQ;KACxB;CACJ,CAAA"}
